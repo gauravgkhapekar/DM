@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flood Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <style>
+        /* Your custom CSS styles here */
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+        .histogram { width: 40%; float: left; padding: 20px; }
+        .severity-item { margin-bottom: 10px; }
+        .severity-item i { margin-right: 5px; }
+        .bar { background-color: #3498db; width: 80%; height: 20px; margin-bottom: 5px; }
+        .bar span { color: white; line-height: 20px; }
+        .slider-container { margin-top: 20px; }
+        .slider-container input[type="range"] { width: 100%; }
+        .legend {
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+        .legend-label {
+            font-size: 14px;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .legend {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+   <!-- Dropdown for selecting year -->
+    <div>
+        <label for="year-select">Select Year:</label>
+        <select id="year-select">
+            <option value="2000">2000</option>
+            <option value="2001">2001</option>
+            <option value="2002">2002</option>
+            <option value="2003">2003</option>
+            <option value="2004">2004</option>
+            <option value="2005">2005</option>
+            <option value="2006">2006</option>
+            <option value="2007">2007</option>
+            <option value="2008">2008</option>
+            <option value="2009">2009</option>
+            <option value="2010">2010</option>
+            <option value="2011">2011</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+        </select>
+    </div>
+    
+    <div class="histogram">
+        <h2>Flood Severity Count</h2>
+        <div class="severity-item">
+            <i class="fas fa-exclamation-triangle" style="color: red;"></i> High Severity:
+            <div class="bar" id="high-bar"><span></span></div>
+        </div>
+        <div class="severity-item">
+            <i class="fas fa-exclamation-circle" style="color: orange;"></i> Medium Severity:
+            <div class="bar" id="medium-bar"><span></span></div>
+        </div>
+        <div class="severity-item">
+            <i class="fas fa-info-circle" style="color: yellow;"></i> Low Severity:
+            <div class="bar" id="low-bar"><span></span></div>
+        </div>  
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="flood_data.js"></script> <!-- External JavaScript file for flood data -->
+    <script src="map.js"></script> <!-- External JavaScript file for map rendering -->
+</body>
+</html>
